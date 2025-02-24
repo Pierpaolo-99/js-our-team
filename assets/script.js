@@ -39,19 +39,22 @@ const teamMembers = [
 console.log(teamMembers);
 
 const colEl = document.querySelector('col')
-
-function myFunction (...arr){
-  const arrCard = []
-  const {name,role,email,img} = teamMembers
+function generateArrName (arr){
+  const arrName = []
   for (let i = 0; i < arr.length; i++){
-    thisMembersName = arr[i][name,role,email,img]
-    arrCard.push(thisMembersName)
+    const thisMembers = arr[i]
+    const {name} = thisMembers
+    arrName.push(name)
   }
-  return arrCard
+  return arrName
 }
 
-const card = myFunction(teamMembers)
-console.log(card);
+const membersName = generateArrName(teamMembers)
+console.log(membersName);
+
+
+
+
 
 
 
