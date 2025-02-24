@@ -38,19 +38,43 @@ const teamMembers = [
 ];
 console.log(teamMembers);
 
-const colEl = document.querySelector('col')
-function generateArrName (arr){
-  const arrName = []
-  for (let i = 0; i < arr.length; i++){
-    const thisMembers = arr[i]
-    const {name} = thisMembers
-    arrName.push(name)
+
+
+function getMemberObject (teamMembers){
+
+  for (let i = 0; i < teamMembers.length; i++){
+    const thisMember = teamMembers[i]
+    return thisMember
   }
-  return arrName
+  
 }
 
-const membersName = generateArrName(teamMembers)
-console.log(membersName);
+const thisMember = getMemberObject(teamMembers)
+console.log(thisMember);
+
+function getMemberMarkup (thisMember){
+  const {name,role,email,img} = thisMember
+
+  console.log(name,role,email,img);
+
+  const markup = `
+              <div class="col-6">
+                <div class="card">
+                  <img src="${img}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h3>${name}</h3>
+                    <p>${role}</p>
+                    <p>${email}</p>
+                  </div>
+                </div>
+            </div>
+  `
+  return markup
+}
+
+
+
+
 
 
 
