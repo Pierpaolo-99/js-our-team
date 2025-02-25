@@ -37,22 +37,24 @@ const teamMembers = [
   }
 ];
 console.log(teamMembers);
+
 const cardEl = document.querySelector('.row')
+const formEl = document.getElementById('form_member')
 
 function getMemberMarkup (member){
   const { name,role,email,img} = member
 
   const markup = `
-  <div class="col-4">
-    <div class="card">
-      <img src="./assets/${img}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h3>${name}</h3>
-        <p>${role}</p>
-        <p>${email}</p>
-      </div>
-    </div>
-  </div>
+            <div class="col-12 col-md-6 col-lg-4 gy-3">
+                <div class="card_members d-flex bg-black text-white">
+                    <img width="50%" src="./assets/${img}" alt="">
+                    <div class="card_body p-3">
+                        <h3>${name}</h3>
+                        <p>${role}</p>
+                        <a href="#">${email}</a>
+                    </div>
+                </div>
+            </div>
   `
   return markup
 }
@@ -68,3 +70,44 @@ function renderTeamMembers (teamMembers, cardEl){
 }
 
 renderTeamMembers(teamMembers,cardEl)
+
+formEl.addEventListener('submit', function (e){
+  e.preventDefault()
+
+  const name = document.querySelector('input[name="name"]').value
+  console.log(name);
+  
+  const job = document.querySelector('input[name="job"]').value
+  console.log(job);
+
+  const email = document.querySelector('input[name="email"]').value
+  console.log(email);
+
+  const image = document.querySelector('input[name="image"]').value
+  console.log(image);
+
+  const member = {
+    name: name,
+    job: job,
+    email: email,
+    image: image
+  }
+  console.log(member);
+
+  const markup = `
+  <div class="col-12 col-md-6 col-lg-4 gy-3">
+      <div class="card_members d-flex bg-black text-white">
+          <img width="50%" src="${image}" alt="">
+          <div class="card_body p-3">
+              <h3>${name}</h3>
+              <p>${job}</p>
+              <a href="#">${email}</a>
+          </div>
+      </div>
+  </div>
+  `
+  console.log(markup);
+
+  cardEl.innerHTML += markup
+  
+})
