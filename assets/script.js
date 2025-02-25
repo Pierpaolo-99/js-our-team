@@ -37,48 +37,43 @@ const teamMembers = [
   }
 ];
 console.log(teamMembers);
+const cardEl = document.querySelector('.row')
 
-
-
-function getMemberObject (teamMembers){
-
-  for (let i = 0; i < teamMembers.length; i++){
+function getObject(teamMembers) {
+  for (let i = 0; i < teamMembers.length; i++) {
     const thisMember = teamMembers[i]
     return thisMember
   }
-  
 }
+const member = getObject(teamMembers)
+console.log(member);
 
-const thisMember = getMemberObject(teamMembers)
-console.log(thisMember);
-
-function getMemberMarkup (thisMember){
-  const {name,role,email,img} = thisMember
-
-  console.log(name,role,email,img);
+function getMemberMarkup (member){
+  const { name,role,email,img} = member
 
   const markup = `
-              <div class="col-6">
-                <div class="card">
-                  <img src="${img}" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h3>${name}</h3>
-                    <p>${role}</p>
-                    <p>${email}</p>
-                  </div>
-                </div>
-            </div>
+  <div class="col-6">
+    <div class="card">
+      <img src="./assets/${img}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h3>${name}</h3>
+        <p>${role}</p>
+        <p>${email}</p>
+      </div>
+    </div>
+  </div>
   `
   return markup
 }
 
+function renderTeamMembers (teamMembers, cardEl){
+  for (let i = 0; i < teamMembers.length; i++){
+    const thisMember = teamMembers[i]
 
+    const markup = getMemberMarkup(member)
 
+    cardEl.innerHTML += markup
+  }
+}
 
-
-
-
-
-
-
-
+renderTeamMembers(teamMembers,cardEl)
