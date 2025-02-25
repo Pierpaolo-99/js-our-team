@@ -39,20 +39,11 @@ const teamMembers = [
 console.log(teamMembers);
 const cardEl = document.querySelector('.row')
 
-function getObject(teamMembers) {
-  for (let i = 0; i < teamMembers.length; i++) {
-    const thisMember = teamMembers[i]
-    return thisMember
-  }
-}
-const member = getObject(teamMembers)
-console.log(member);
-
 function getMemberMarkup (member){
   const { name,role,email,img} = member
 
   const markup = `
-  <div class="col-6">
+  <div class="col-4">
     <div class="card">
       <img src="./assets/${img}" class="card-img-top" alt="...">
       <div class="card-body">
@@ -70,7 +61,7 @@ function renderTeamMembers (teamMembers, cardEl){
   for (let i = 0; i < teamMembers.length; i++){
     const thisMember = teamMembers[i]
 
-    const markup = getMemberMarkup(member)
+    const markup = getMemberMarkup(thisMember)
 
     cardEl.innerHTML += markup
   }
